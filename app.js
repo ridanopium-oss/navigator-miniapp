@@ -6,6 +6,8 @@ let state=null,lastImage=null,lastTime='',friendsKey='',onlineKey='',running=fal
 const controls=[],colorControls=[];
 const pagesHost=location.hostname.endsWith('.github.io');
 let apiBase=(window.NAVIGATOR_API||'').replace(/\/$/,''),sessionToken='';
+const fromMenu=new URLSearchParams(location.search).get('api');
+if(fromMenu){try{const url=new URL(fromMenu);if(url.protocol==='https:'&&!url.username&&!url.password&&!url.search&&!url.hash&&['','/'].includes(url.pathname)){apiBase=url.origin;try{localStorage.setItem('navigator_api',apiBase);}catch{}}}catch{}}
 if(pagesHost&&!apiBase){try{apiBase=localStorage.getItem('navigator_api')||'';}catch{}}
 function headers(json=false){return{...(json?{'Content-Type':'application/json'}:{}),...(sessionToken?{'Authorization':'Bearer '+sessionToken}:{})};}
 async function post(path,payload){const response=await fetch(apiBase+path,{method:'POST',credentials:'omit',headers:headers(true),body:JSON.stringify(payload)});const data=await response.json();if(!response.ok)throw Error(data.error||'Ошибка запроса');return data;}
