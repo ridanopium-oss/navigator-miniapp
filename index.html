@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Штурман</title><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="./style.css"><script src="https://telegram.org/js/telegram-web-app.js"></script><script src="./config.js"></script><script src="./app.js" defer></script></head>
+<body><header><strong>ШТУРМАН</strong><span id="status">Вход через Telegram…</span><button id="fullscreen">На весь экран</button></header>
+<main><form id="connection" class="hidden"><label>Адрес подключения<input id="server-url" type="url" placeholder="https://…trycloudflare.com" required></label><button>Подключиться</button></form><section id="viewer"><canvas id="screen" width="1280" height="720" aria-label="Изображение GTA с метками игроков"></canvas><p id="message">Открой приложение кнопкой «Штурман» в своём боте.</p></section>
+<nav><button data-tab="display" class="selected">Вид</button><button data-tab="friends">Друзья</button><button data-tab="colors">Цвета</button><button data-tab="counters">Счётчики</button></nav>
+<section id="display" class="panel"><button id="toggle">Включить / выключить скелеты</button><div id="flags"></div><p>Картинка GTA до 1280×720, до 10 кадров/с. Звук не передаётся. Изменения сохраняются на компьютере.</p></section>
+<section id="friends" class="panel hidden"><h2>Только зелёный скелет</h2><form id="friend-form"><input id="friend-name" maxlength="96" autocomplete="off" placeholder="Точный ник персонажа" aria-label="Имя друга"><button>Добавить</button></form><p>Ник сохраняется после выхода из прогруза. После смены ника обнови запись. Для разных серверов используй отдельный список.</p><div id="friend-list"></div><h2>В прогрузе</h2><div id="online"></div></section>
+<section id="colors" class="panel hidden"><div id="color-inputs"></div><p>Админы всегда красные. Друзья всегда зелёные. У медиа и лидеров за стеной сохраняется оттенок.</p></section>
+<section id="counters" class="panel hidden"><p>Каждая позиция задаётся отдельно в процентах ширины и высоты картинки.</p><div id="positions"></div></section>
+</main><footer id="error" role="status"></footer></body></html>
